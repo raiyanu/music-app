@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<!-- TODO: user interface is done
+<!-- 
+  TODO: user interface is done
 - gotta make dynamic javascript interface
 - find a way to load song from db or any good ways
 -->
@@ -8,71 +9,78 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music player | Home </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music player | Home</title>
   <script src="https://kit.fontawesome.com/2594112ae0.js" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com/"></script>
-  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/style.css" />
 </head>
 
 <body class="h-screen">
-  <div class="container m-auto flex items-center justify-center h-full ">
-    <div class="music-player  border-black m-auto w-[320px] h-[450px] rounded-3xl overflow-y-scroll relative">
-      <header class="border  flex gap-3 justify-between px-6 py-2 sticky top-0 z-10 bg-white border-b-black">
+  <div class="container m-auto flex items-center justify-center h-full">
+    <div class="music-player border-black m-auto w-[320px] h-[450px] rounded-3xl overflow-y-scroll relative">
+      <header class="border flex gap-4 justify-between px-6 py-2 sticky top-0 z-10 bg-white border-b-black">
         <h1 class="text-3xl font-mono">Music player</h1>
         <nav>
-          <i class="text-2xl fa-bars cursor-pointer" onclick="show(0)"></i>
-          <i class="text-2xl fa-close hidden cursor-pointer"></i>
-          <span class="hidden">
-            <p>Home</p>
-            <p>About</p>
-            <p>Links</p>
+          <i class="text-2xl fa-bars cursor-pointer" id="openmenu" onclick="showMenu()"></i>
+          <i class="text-2xl fa-close hidden cursor-pointer" id="closemenu" onclick="showMenu()"></i>
+          <span
+            class=" absolute flex items-start justify-evenly flex-col bg-white text-2xl rounded-lg border-2 border-black right-5 h-max py-1 w-[120px] px-2 hidden"
+            id="menu">
+            <p class="border-b border-gray-600 block w-full flex-shrink-0 cursor-pointer" onclick="popy('home')">Home
+            </p>
+            <p class="border-b border-gray-600 block w-full flex-shrink-0 cursor-pointer" onclick="popy('about')">About
+            </p>
+            <p class=" block w-full flex-shrink-0 cursor-pointer" onclick="popy('links')">Links
+            </p>
           </span>
         </nav>
       </header>
       <main class="relative">
-        <div id="top" class=" my-3">
-          <h2 class="text-6xl font-extrabold font-mono sticky">Best <br> Song</h2>
+        <div id="top" class="my-3">
+          <h2 class="text-6xl font-extrabold font-mono sticky">
+            Best <br />
+            Song
+          </h2>
           <div
             class="top-item flex items-start gap-3 w-full p-2 bg-slate-500 text-white rounded-2xl cursor-pointer mb-7">
-            <img src="./assets/songs/Shape_Of_You_(Official_Single_Cover)_by_Ed_Sheeran.png" alt="Best song img"
-              class=" rounded-2xl h-[5rem] w-[6rem] bg-slate-600">
-            <span class="flex items-start justify-center flex-col  h-full ">
-              <p class="font-bold text-4xl ">Shape of you 0</p>
-              <p class="text-right text-2xl">By Ed-sheeran</p>
+            <img src="" id="top-song-img" alt="Best song img" class="rounded-2xl h-[5rem] w-[6rem] bg-slate-600" />
+            <span class="flex items-start justify-center flex-col h-full">
+              <p class="font-bold text-4xl" id="top-song-name">---</p>
+              <p class="text-right text-2xl" id="top-song-author">By Ed-sheeran</p>
             </span>
           </div>
-
         </div>
         <div class="today-hot mb-7">
           <h2 class="text-4xl font-extrabold font-mono">Todays Hot</h2>
-          <ul>
-            <li
-              class="top-item flex items-center gap-3  p-2  border-2 border-black  rounded-2xl flex-col w-[8rem] cursor-pointer text-black">
+          <ul id="todayBest" class="h-64 flex overflow-x-scroll gap-3">
+            <!-- below is a simple template for re Use  -->
+            <!-- <li
+              class="top-item flex items-center gap-3 p-2 border-2 border-black rounded-2xl flex-col w-[9rem] cursor-pointer text-black flex-shrink-0">
               <img src="./assets/songs/Shape_Of_You_(Official_Single_Cover)_by_Ed_Sheeran.png" alt="Best song img"
-                class="rounded-2xl h-[5rem] w-[6rem] bg-slate-500 overflow-hidden">
+                class="rounded-2xl h-[5rem] w-[6rem] bg-slate-500 overflow-hidden" />
               <span>
-                <p class="text-lg font-bold ">Shape of you</p>
+                <p class="text-lg font-bold">Shape of you</p>
                 <p class="text-base text-gray-600">By Ed-sheeran</p>
               </span>
-            </li>
+            </li> -->
           </ul>
         </div>
         <h2 class="text-4xl font-extrabold font-mono">All Songs</h2>
-        <ul class="all-songs mb-8">
-          <li
-            class="top-item flex items-start gap-3 border-black border-2 p-2 bg-slate-300 rounded-lg cursor-pointer w-full ">
+        <ul class="all-songs mb-8 flex flex-col gap-2" id="whole">
+          <!-- below is a simple template for re Use  -->
+          <!-- <li
+            class="top-item flex items-start gap-3 border-black border-2 p-2 bg-slate-300 rounded-lg cursor-pointer w-full">
             <img src="./assets/songs/Shape_Of_You_(Official_Single_Cover)_by_Ed_Sheeran.png" alt="Best song"
-              class="rounded rounded-3 h-[3rem] w-[3rem]">
+              class="rounded rounded-3 h-[3rem] w-[3rem]" />
             <span>
               <p class="text-lg font-bold">Shape of you</p>
-              <p class="text-base" style="opacity: .6;">By Ed-sheeran</p>
+              <p class="text-base" style="opacity: 0.6">By Ed-sheeran</p>
             </span>
-          </li>
+          </li> -->
         </ul>
         <i class="fa-chevron-up text-center block text-slate-400"></i>
-
       </main>
       <!-- TODO: add on below minimized for default closure -->
       <div id="player" class="player showing minimized">
@@ -82,31 +90,36 @@
         </div>
         <div class="about-song">
           <div class="song-container">
-            <img src="./assets/songs/Shape_Of_You_(Official_Single_Cover)_by_Ed_Sheeran.png" alt="songs">
+            <img src="" alt="songs" id="playing-icon" class="object-cover rounded-full" />
           </div>
           <div class="song-detail" onclick="show(1)">
             <h3 id="song-name">The song name</h3>
-            <p class="text-base text-gray-600 text-center">By the author</p>
+            <p class="text-base text-gray-600 text-center" id="song-author">By the author</p>
           </div>
         </div>
         <div class="controls">
           <div class="duration">
             <span id="current">02:32</span>
-            <input type="range" name="song-time-range" id="song-time-range">
+            <input type="range" name="song-time-range" id="song-time-range" />
             <span id="song-total">04:55</span>
           </div>
           <div class="playback-controls">
-            <i class="fa-backward-fast cursor-pointer"></i>
-            <i class="fa-circle-play cursor-pointer"></i>
-            <i class="fa-circle-pause cursor-pointer hidden"></i>
-            <i class="fa-forward-fast cursor-pointer"></i>
+            <i class="fa-backward-fast cursor-pointer" onclick="songSwitch(0)"></i>
+            <i class="fa-circle-play cursor-pointer" onclick="playSong()" id="playicon"></i>
+            <i class="fa-circle-pause cursor-pointer hidden" onclick="playSong()" id="pauseicon"></i>
+            <i class="fa-forward-fast cursor-pointer" onclick="songSwitch(1)"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <audio id="mySong">
+    <source id="audioSource" type="audio/mpeg">
+    <h1>Your browser does not support the audio element.</h1>
+  </audio>
+  <script src="js/casual.js"></script>
+  <script src="js/songs.js"></script>
   <script src="js/main.js"></script>
-
 </body>
 
 </html>

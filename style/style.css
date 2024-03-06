@@ -49,7 +49,7 @@ img {
 }
 
 .showing .song-container img {
-  object-fit: contain;
+  object-fit: cover;
   height: 80%;
   width: 80%;
   border-radius: 1rem;
@@ -121,12 +121,11 @@ img {
   font-size: 2.5rem; /* Adjust according to your requirement */
 }
 .showing .fa-circle-play {
-  font-size: 3rem; /* Adjust according to your requirement */
+  font-size: 4rem; /* Adjust according to your requirement */
 }
 
 .showing .fa-circle-pause {
-  font-size: 3rem; /* Adjust according to your requirement */
-  display: none;
+  font-size: 4rem; /* Adjust according to your requirement */
 }
 
 .showing .hidden {
@@ -189,6 +188,14 @@ img {
   gap: 1rem;
   padding-bottom: 0;
   align-items: center;
+}
+.minimized .fa-circle-play,
+.minimized .fa-circle-pause {
+  font-size: 3rem; /* Adjust according to your requirement */
+}
+.minimized .fa-forward-fast,
+.minimized .fa-backward-fast {
+  font-size: 1.8rem;
 }
 .minimized .controls {
   margin-top: unset;
