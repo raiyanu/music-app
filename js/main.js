@@ -217,12 +217,7 @@ function playit(id) {
     songs[index].author.length <= 30
       ? songs[index].author
       : songs[index].author.substring(0, 30) + "...";
-  document.getElementById(
-    "playing-icon"
-  ).src = `/assets/songs/thumbnails/${songs[index].name.replace(
-    /\.mp3$/,
-    ".png"
-  )}`;
+  document.getElementById("playing-icon").src = songs[index].thumbnail;
   document.getElementById("pauseicon").classList.remove("hidden");
   document.getElementById("playicon").classList.add("hidden");
   currentSong.id = id;

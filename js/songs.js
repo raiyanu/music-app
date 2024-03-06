@@ -73,9 +73,9 @@ songs = [
     id: 9,
     name: "NUEKI_ TOLCHONOV - INDIAN PHONK EKI (Brazilian Funk Phonk_ Tik Tok Remix Viral 2023)(MP3_320K).mp3",
     author: "NUEKI_ TOLCHONOV",
-    path: "assets/songs/NUEKI_ TOLCHONOV - INDIAN PHONK EKI (Brazilian Funk Phonk_ Tik Tok Remix Viral 2023)(MP3_320K).mp3",
+    path: "assets/songs/NUEKI_ TOLCHONOV - INDIAN PHONK EKI (Brazilian Funk   Phonk_ Tik Tok Remix Viral 2023)(MP3_320K).mp3",
     stars: 4.4,
     thumbnail:
-      "assets/songs/thumbnails/NUEKI_ TOLCHONOV - INDIAN PHONK EKI (Brazilian Funk   Phonk_ Tik Tok Remix Viral 2023)(MP3_320K).png",
+      "assets/songs/thumbnails/NUEKI_TOLCHONOV-INDIAN PHONK EKI (FunkPhonk_Tik Tok Remix Viral 2023)(MP3_320K).png",
   },
 ];
